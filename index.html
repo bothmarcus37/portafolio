@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portafolio</title>
+  <meta name="description" content="Portafolio de proyectos web con JavaScript y PHP.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#proyectos">Ir a los proyectos</a>
+
+  <div class="aviso" id="aviso" hidden></div>
+
+  <header class="cabecera">
+    <a class="marca" href="#inicio" id="marca"></a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="portada">
+      <h1 id="titular"></h1>
+      <p class="presentacion" id="presentacion"></p>
+
+      <!-- Índice de proyectos, con la forma del listado de carpetas de Apache -->
+      <div class="indice">
+        <p class="indice-ruta" id="indice-ruta"></p>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col" class="col-que">Qué es</th>
+              <th scope="col" class="col-tec">Hecho con</th>
+            </tr>
+          </thead>
+          <tbody id="indice-filas"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="proyectos" class="proyectos" aria-label="Proyectos"></section>
+
+    <section id="sobre-mi" class="sobre">
+      <h2>Sobre mí</h2>
+      <div class="sobre-cuerpo">
+        <div id="sobre-texto"></div>
+        <div>
+          <h3>Con qué trabajo</h3>
+          <ul class="chips" id="tecnologias"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+      <h2>Contacto</h2>
+      <p id="contacto-texto"></p>
+      <div class="acciones" id="contacto-enlaces"></div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p id="pie-texto"></p>
+  </footer>
+
+  <script src="datos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

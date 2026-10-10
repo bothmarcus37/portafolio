@@ -6,29 +6,104 @@
    ========================================================= */
 
 const PERFIL = {
-  nombre: "Alberto Jiménez",
+  nombre: "Alberto Jiménez Hernández",
 
-  // Tu usuario de GitHub, sin @ ni enlaces. Ejemplo: "albertojimenez"
+  // Tu usuario de GitHub, sin @ ni enlaces.
   // Con esto se arman solos los enlaces "Ver código" y "Abrir demo".
   github: "bothmarcus37",
 
   // Tu correo de contacto. Déjalo vacío si no quieres mostrarlo.
   correo: "",
 
+  carrera: "Ingeniería en Tecnologías de la Información",
+  universidad: "Universidad Politécnica del Valle de Toluca (UPVT)",
+
   titular: "Aplicaciones web que hablan con APIs reales.",
 
   presentacion:
-    "Soy Alberto Jiménez, programador. Aquí están los proyectos que he construido con JavaScript y PHP: qué hace cada uno, con qué está hecho y dónde ver su código.",
+    "Soy Alberto Jiménez Hernández, estudiante de Ingeniería en Tecnologías de la Información en la Universidad Politécnica del Valle de Toluca. Aquí están mis proyectos de desarrollo web, con su código y su demo, y el resto de mi trabajo en redes e IoT.",
 
   sobreMi: [
-    "Casi todo lo que construyo parte de la misma idea: tomar datos de una API pública y convertirlos en algo que se pueda usar, ya sea un catálogo de películas, una Pokédex o un ticket de viaje en PDF.",
-    "Trabajo el front con HTML, CSS y JavaScript sin frameworks, y el lado del servidor con PHP y MySQL sobre XAMPP.",
+    "Estudio Ingeniería en Tecnologías de la Información y tengo proyectos en desarrollo web, bases de datos, redes e IoT. He construido aplicaciones con PHP, JavaScript y MySQL, integrado APIs públicas y prototipado dispositivos con ESP32.",
+    "Busco prácticas o un primer empleo en tecnología, con interés en computación en la nube y bases de datos.",
   ],
 
-  // Solo tecnologías que aparecen en los proyectos de abajo.
-  tecnologias: [
-    "HTML", "CSS", "JavaScript", "Fetch API", "PHP", "MySQL",
-    "Bootstrap 5", "Leaflet", "jsPDF", "Three.js",
+  cursos: [
+    "Curso Propedéutico CPFIA, TecNM (constancia de julio de 2026)",
+    "Microsoft Azure Fundamentals (AZ-900), en preparación",
+  ],
+
+  experiencia: [
+    {
+      puesto: "Estancia profesional II",
+      lugar: "ZooAventuras",
+      periodo: "en curso, 240 horas",
+      puntos: [
+        "Análisis de requerimientos y necesidades de los usuarios para un sistema de reportes de incidencias tecnológicas.",
+        "Diseño y modelado de la solución que comunica a los trabajadores con el departamento de sistemas.",
+        "Planeación de etapas, tareas y entregables con cronograma y diagrama de Gantt, y seguimiento del avance.",
+      ],
+    },
+    {
+      puesto: "Estancia profesional I",
+      lugar: "MOY",
+      periodo: "240 horas",
+      puntos: [
+        "Mantenimiento preventivo y correctivo de equipos de cómputo.",
+        "Instalación y configuración de software.",
+        "Apoyo en el desarrollo de páginas web.",
+      ],
+    },
+  ],
+
+  // Proyectos que no tienen repositorio (redes, IoT, sistemas empresariales).
+  otrosProyectos: [
+    {
+      nombre: "Guante quiropráctico inteligente",
+      area: "IoT y sistemas embebidos",
+      descripcion:
+        "Prototipo de apoyo a la rehabilitación de la mano: mide presión, movimiento y temperatura, y responde con vibración programada.",
+      tecnologias: ["ESP32", "Sensores FSR, IMU y NTC", "Motores LRA", "DRV2605L", "DRV8833", "Arduino"],
+    },
+    {
+      nombre: "FoodGuard",
+      area: "IoT y sistemas embebidos, en desarrollo",
+      descripcion:
+        "Sistema embebido para vigilar la conservación de pescado almacenado, alimentado con panel solar.",
+      tecnologias: ["ESP32"],
+    },
+    {
+      nombre: "Red empresarial simulada",
+      area: "Redes e infraestructura",
+      descripcion:
+        "Diseño y configuración de una red con dos VLAN, enrutamiento EIGRP, NAT, ACL, DNS, DMZ y servidor Apache, verificada con pruebas de conectividad.",
+      tecnologias: ["GNS3", "EIGRP", "VLAN", "NAT", "ACL", "DNS", "Apache"],
+    },
+    {
+      nombre: "Prácticas con Odoo ERP 18",
+      area: "Sistemas empresariales",
+      descripcion:
+        "Configuración, alta de productos, proveedores y clientes, y flujo de compras, ventas y facturación.",
+      tecnologias: ["Odoo ERP 18"],
+    },
+    {
+      nombre: "Moon Candy",
+      area: "Emprendimiento",
+      descripcion:
+        "Propuesta de máquina expendedora inteligente conectada a un wearable, con presupuesto de inversión, análisis de costos y presentación comercial.",
+      tecnologias: [],
+    },
+  ],
+
+  habilidades: [
+    { area: "Lenguajes", detalle: "HTML, CSS, JavaScript, PHP, Python, C++" },
+    { area: "Bases de datos", detalle: "MySQL, MariaDB, SQL Server; diseño de tablas y consultas SQL" },
+    { area: "Redes", detalle: "GNS3, EIGRP, VLAN, NAT, ACL, DNS, direccionamiento IP y subnetting" },
+    { area: "Seguridad", detalle: "Firewalls, VPN, certificados digitales, DMZ" },
+    { area: "Virtualización y servidores", detalle: "VMware, VirtualBox, Vagrant, CentOS, XAMPP, monitoreo con Nagios" },
+    { area: "Electrónica e IoT", detalle: "ESP32, Arduino, sensores, motores y controladores, prototipado en protoboard" },
+    { area: "Sistemas empresariales", detalle: "Odoo ERP 18" },
+    { area: "Herramientas", detalle: "Visual Studio Code, NetBeans, Git y GitHub" },
   ],
 };
 
@@ -37,6 +112,8 @@ const PERFIL = {
    repo     -> nombre EXACTO del repositorio en GitHub
    demo     -> true si funciona en GitHub Pages (solo HTML/CSS/JS).
                Los proyectos con PHP no corren ahí: déjalo en false.
+   demoUrl  -> dirección de la demo cuando está en otro servidor
+               (para los proyectos con PHP). Ejemplo: "https://misitio.com/tienda/".
    imagen   -> captura de pantalla, por ejemplo "img/netflix.jpg".
                Si lo dejas vacío se muestra una portada de color.
    color / tinta -> colores de esa portada.                              */

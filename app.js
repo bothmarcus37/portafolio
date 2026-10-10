@@ -82,23 +82,72 @@
     texto.append(chips);
 
     const acciones = el("div", "acciones");
+    // La demo puede estar en GitHub Pages (demo: true) o en otro servidor (demoUrl)
+    const demo = p.demoUrl || (p.demo && usuario ? `https://${usuario}.github.io/${p.repo}/` : "");
+
     if (usuario) {
       acciones.append(enlace("Ver código", `${perfilGitHub}/${p.repo}`, "boton"));
-      if (p.demo) acciones.append(enlace("Abrir demo", `https://${usuario}.github.io/${p.repo}/`, "boton boton-claro"));
     } else {
       acciones.append(el("span", "boton boton-apagado", "Ver código"));
-      if (p.demo) acciones.append(el("span", "boton boton-claro boton-apagado", "Abrir demo"));
     }
-    if (!p.demo) acciones.append(el("span", "nota", "Usa PHP: se prueba en un servidor local como XAMPP."));
+    if (demo) {
+      acciones.append(enlace("Abrir demo", demo, "boton boton-claro"));
+    } else if (p.demo) {
+      acciones.append(el("span", "boton boton-claro boton-apagado", "Abrir demo"));
+    } else {
+      acciones.append(el("span", "nota", "Usa PHP: se prueba en un servidor local como XAMPP."));
+    }
     texto.append(acciones);
 
     art.append(portada, texto);
     lista.append(art);
   });
 
+  // ---------- Más proyectos y experiencia (misma forma: título, detalle y texto) ----------
+  function fila(titulo, detalle, descripcion, puntos, etiquetas) {
+    const art = el("article", "fila");
+    const cabeza = el("div", "fila-cabeza");
+    cabeza.append(el("h3", null, titulo));
+    if (detalle) cabeza.append(el("p", "fila-detalle", detalle));
+    const cuerpo = el("div", "fila-cuerpo");
+    if (descripcion) cuerpo.append(el("p", null, descripcion));
+    if (puntos && puntos.length) {
+      const ul = el("ul", "puntos");
+      puntos.forEach(t => ul.append(el("li", null, t)));
+      cuerpo.append(ul);
+    }
+    if (etiquetas && etiquetas.length) {
+      const chips = el("ul", "chips");
+      etiquetas.forEach(t => chips.append(el("li", null, t)));
+      cuerpo.append(chips);
+    }
+    art.append(cabeza, cuerpo);
+    return art;
+  }
+
+  (PERFIL.otrosProyectos || []).forEach(p =>
+    $("otros-proyectos").append(fila(p.nombre, p.area, p.descripcion, null, p.tecnologias)));
+  $("mas-proyectos").hidden = !(PERFIL.otrosProyectos || []).length;
+
+  (PERFIL.experiencia || []).forEach(x =>
+    $("experiencia-lista").append(fila(x.puesto, [x.lugar, x.periodo].filter(Boolean).join(", "), null, x.puntos)));
+  $("experiencia").hidden = !(PERFIL.experiencia || []).length;
+
   // ---------- Sobre mí ----------
   PERFIL.sobreMi.forEach(parrafo => $("sobre-texto").append(el("p", null, parrafo)));
-  PERFIL.tecnologias.forEach(t => $("tecnologias").append(el("li", null, t)));
+
+  const formacion = $("formacion");
+  if (PERFIL.carrera) formacion.append(el("p", "formacion-carrera", PERFIL.carrera));
+  if (PERFIL.universidad) formacion.append(el("p", null, PERFIL.universidad));
+  (PERFIL.cursos || []).forEach(c => formacion.append(el("p", "formacion-curso", c)));
+
+  (PERFIL.habilidades || []).forEach(h => {
+    const tr = el("tr");
+    const th = el("th", null, h.area);
+    th.scope = "row";
+    tr.append(th, el("td", null, h.detalle));
+    $("habilidades").append(tr);
+  });
 
   // ---------- Contacto ----------
   const correo = (PERFIL.correo || "").trim();

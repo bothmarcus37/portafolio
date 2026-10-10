@@ -84,13 +84,34 @@ code { font-family: Consolas, "Courier New", monospace; font-size: .92em; backgr
 .boton-apagado, .boton-apagado:hover { opacity: .45; cursor: not-allowed; background: transparent; color: var(--tinta); border-color: var(--tinta); border-style: dashed; }
 .nota { flex-basis: 100%; font-size: .9rem; color: var(--tinta-suave); }
 
-/* ---------- Sobre mí y contacto ---------- */
-.sobre, .contacto { padding: clamp(48px, 7vw, 88px) 0; border-top: 1px solid var(--linea); }
-.sobre h2, .contacto h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); font-weight: 800; }
+/* ---------- Bloques: más proyectos, experiencia, sobre mí y contacto ---------- */
+.bloque { padding: clamp(48px, 7vw, 88px) 0; border-top: 1px solid var(--linea); }
+.bloque[hidden] { display: none; }
+.bloque h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); font-weight: 800; }
+.bloque-nota { color: var(--tinta-suave); margin: 12px 0 0; max-width: 56ch; }
+
+.lista-filas { margin-top: 28px; border-top: 1px solid var(--linea); }
+.fila { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(16px, 4vw, 56px); padding: 24px 0; border-bottom: 1px solid var(--linea); }
+.fila h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+.fila-detalle { margin: 6px 0 0; color: var(--tinta-suave); font-size: .95rem; }
+.fila-cuerpo > p { margin: 0; max-width: 62ch; }
+.fila-cuerpo .puntos { margin-top: 0; color: var(--tinta); font-size: 1rem; }
+.fila-cuerpo .puntos li:first-child { margin-top: 0; }
+.fila-cuerpo .chips { margin-top: 14px; }
+
+.formacion-carrera { font-weight: 600; }
+#formacion p { margin: 10px 0 0; }
+.formacion-curso { color: var(--tinta-suave); font-size: .95rem; }
+
+.titulo-tabla { margin-top: 48px; font-size: 1.1rem; font-weight: 700; letter-spacing: 0; }
+.habilidades { width: 100%; border-collapse: collapse; margin-top: 14px; background: var(--hoja); border: 1px solid var(--linea); border-radius: 6px; }
+.habilidades th, .habilidades td { text-align: left; vertical-align: top; padding: 12px 18px; border-bottom: 1px solid var(--linea); }
+.habilidades tr:last-child th, .habilidades tr:last-child td { border-bottom: 0; }
+.habilidades th { width: 30%; font-weight: 600; }
+.habilidades td { color: var(--tinta-suave); }
 .sobre-cuerpo { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 56px); margin-top: 24px; }
 .sobre-cuerpo p { margin: 0 0 14px; max-width: 60ch; }
-.sobre h3 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0; }
-.sobre .chips { margin-top: 14px; }
+.sobre-cuerpo h3 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0; }
 .contacto p { max-width: 52ch; color: var(--tinta-suave); margin: 16px 0 0; }
 
 .pie { padding-top: 28px; padding-bottom: 40px; border-top: 1px solid var(--linea); color: var(--tinta-suave); font-size: .92rem; }
@@ -98,7 +119,9 @@ code { font-family: Consolas, "Courier New", monospace; font-size: .92em; backgr
 
 /* ---------- Pantallas chicas ---------- */
 @media (max-width: 780px) {
-  .proyecto, .sobre-cuerpo { grid-template-columns: 1fr; }
+  .proyecto, .sobre-cuerpo, .fila { grid-template-columns: 1fr; }
+  .fila { gap: 12px; }
+  .habilidades th { width: 38%; }
   .proyecto:nth-child(even) .portada-proyecto { order: 0; }
   .col-tec { display: none; }
   .indice th, .indice td, .indice-ruta { padding-left: 16px; padding-right: 16px; }

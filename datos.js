@@ -229,4 +229,22 @@ const PROYECTOS = [
     color: "#E3E8F4",
     tinta: "#14213D",
   },
+  {
+    id: "detector-edad",
+    nombre: "Detector de edad y género",
+    repo: "detector-edad",
+    resumen: "Estima edad y género con la cámara",
+    descripcion:
+      "Página que enciende la cámara al abrirse, detecta los rostros y estima en tiempo real la edad y el género de cada uno. El análisis corre en el navegador, sin enviar el video a ningún servidor.",
+    puntos: [
+      "Acceso a la cámara con getUserMedia y mensajes claros si falta el permiso o no hay cámara",
+      "Detección de rostros y estimación de edad y género con face-api sobre TensorFlow.js",
+      "Recuadro y etiqueta sobre cada rostro, con la edad promediada entre cuadros para que no brinque",
+    ],
+    tecnologias: ["JavaScript", "face-api", "TensorFlow.js", "Canvas", "CSS"],
+    demo: true,
+    imagen: "",
+    color: "#0E1116",
+    tinta: "#4FD1A5",
+  },
 ];
